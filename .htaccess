@@ -1,0 +1,41 @@
+# XAUUSDT Micro-Scalper — configuration Apache WAMP (safe/minimal)
+# Pas de dépendance à mod_rewrite ou mod_expires pour fonctionner au premier lancement.
+
+Options -Indexes +FollowSymLinks
+DirectoryIndex index.php index.html
+
+# Sécurité : interdire l'accès direct aux fichiers sensibles
+<Files "config.php">
+    Require all denied
+</Files>
+<Files "config.example.php">
+    Require all denied
+</Files>
+<Files "bootstrap.php">
+    Require all denied
+</Files>
+<Files "db.php">
+    Require all denied
+</Files>
+<Files "common.php">
+    Require all denied
+</Files>
+
+# Cache des assets statiques (seulement si mod_expires est actif)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 hour"
+    ExpiresByType application/javascript "access plus 1 hour"
+    ExpiresByType image/png "access plus 7 days"
+    ExpiresByType image/svg+xml "access plus 7 days"
+</IfModule>
+
+# Moteur de réécriture (seulement si mod_rewrite est actif)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
+
+# Types MIME
+AddType application/javascript .js
+AddType text/css .css
+AddType image/svg+xml .svg

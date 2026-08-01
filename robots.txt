@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api/
+Disallow: /inc/
+Disallow: /sql/
+Disallow: /install.php
