@@ -1,0 +1,9 @@
+node_modules/
+.npm/
+.cache/
+.DS_Store
+*.log
+.env
+.env.*
+# Fichier de config généré par l'installateur (contient le mdp admin + hash + éventuelles clés)
+/inc/config.php
